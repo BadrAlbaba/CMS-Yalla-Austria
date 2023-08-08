@@ -1,0 +1,146 @@
+<%- include('./partials/header.ejs')  %>
+
+ <div class="container categories">
+
+    <div class="row">
+        <div class="col-lg-8 col-md-8 col-sm-6 first-block">
+            <ul >
+                <% firstTopics.forEach(firstTopic => { %> 
+                <li>
+                    <div class="col-12 sing-cat" style="background-color: #57b6fa"> 
+                        <a href="#<%= firstTopic.name %>"><%= firstTopic.name %> </a>
+                    </div>
+                </li>
+                <% });%>
+        </div>
+
+
+    </div>
+    <div class="row">
+            <div class="col-lg-8 col-md-10 second-block" >
+
+                <% firstTopics.forEach(firstTopic => { %> 
+                <div class="col-lg-12 cat1"  style="background-color: rgb(165, 160, 160)">
+                    
+        
+                    <div class="col-lg-4 cat-left">
+                        <ul>
+                            <li>
+                                <a id="<%= firstTopic.name %>" href="#"><%= firstTopic.name %></a>
+                            </li>
+                        </ul>
+
+                    </div>
+
+
+                    <div class="col-lg-8 cat-right" >
+                        <ul>
+                            <% secoundTopics.forEach(secoundTopic => { %>
+                                <% if(secoundTopic.fsTopic.toString() == firstTopic.id.toString()){ %> 
+                                    <li>
+                                        <a href="#<%= secoundTopic.name %>"><%= secoundTopic.name %> </a>
+                                    </li>
+                                <% } %> 
+                            <% });%>
+                        </ul>
+
+                    </div>
+                    
+
+                </div>
+                <% });%>
+
+            </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-8 col-md-10 second-block" >
+
+            <% secoundTopics.forEach(secoundTopic => { %> 
+            <div class="col-lg-12 cat1"  style="background-color: #DCDCDC">
+                
+    
+                <div class="col-lg-4 cat-left">
+                    <ul>
+                        <li>
+                            <a id="<%= secoundTopic.name %>" href="#"><%= secoundTopic.name %></a>
+                        </li>
+                    </ul>
+
+                </div>
+
+
+                <div class="col-lg-8 cat-right" >
+                    <ul>
+                        <% thirdTopics.forEach(thirdTopic => { %>
+                            <% if(thirdTopic.scTopic.toString() == secoundTopic.id.toString()){ %> 
+                                <li>
+                                    <a href="/categories/<%= thirdTopic.name %>"><%= thirdTopic.name %></a>
+                                </li>
+                            <% } %> 
+                        <% });%>
+                    </ul>
+
+                </div>
+                
+
+            </div>
+            <% });%>
+
+        </div>
+    </div>
+
+
+    
+</div>
+
+
+<!--
+
+
+<section class="categories" id="categories">
+    <div class="container">
+        <ul>
+            <% firstTopics.forEach(firstTopic => { %> 
+                <a href="#<%= firstTopic.name %>"> <li><%= firstTopic.name %> </li></a>
+            <% })%>
+        </ul>
+    </div>
+
+    <div class="container">
+            <% firstTopics.forEach(firstTopic => { %> 
+                <h1 id="<%= firstTopic.name %>"><%= firstTopic.name %></h1>
+                <ul>
+                    <% secoundTopics.forEach(secoundTopic => { %>
+                        <% if(secoundTopic.fsTopic.toString() == firstTopic.id.toString()){ %> 
+                            <li><a href="#<%= secoundTopic.name %>"> <%= secoundTopic.name %> </a></li>
+                        <% } %> 
+                    <% });%>
+                </ul>
+            <% });%>
+    </div>
+
+    <div class="container">
+        <% secoundTopics.forEach(secoundTopic => { %> 
+            <h1 id="<%= secoundTopic.name %>"><%= secoundTopic.name %></h1>
+            <ul>
+                <% thirdTopics.forEach(thirdTopic => { %>
+                    <% if(thirdTopic.scTopic.toString() == secoundTopic.id.toString()){ %> 
+                        <li id="<%= secoundTopic.name %>" ><a href="/categories/<%= thirdTopic.name %>"> <%= thirdTopic.name %> </a> </li>
+                    <% } %> 
+                <% });%>
+            </ul>
+        <% });%>
+</div>
+
+</section>
+
+
+
+
+-->
+
+
+
+<%- include('./partials/footer.ejs')  %> 
+

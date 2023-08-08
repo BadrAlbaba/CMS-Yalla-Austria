@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+          integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+          integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link href="https://unpkg.com/ionicons@4.2.2/dist/css/ionicons.min.css" rel="stylesheet">
+
+
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+
+    <!-- STYLE CSS -->
+    <link rel="stylesheet" href="/css/contact.css">
+    <title>contact us</title>
+</head>
+
+<body>
+
+<div class="wrapper" >
+    <div class="inner">
+
+     <form action="/contact-us" method="post" id="contactsForm">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+         <h3>تواصل معنا </h3>
+         <p>يمكنك ارسال بريد للتواصل معنا أو شكوى أو الابلاغ عن شيئ معين</p>
+         <label for="NameInput" class="form-group">
+             <input name="name" type="text" class="form-control" id="NameInput"required>
+             <span> Name </span>
+             <span class="border"></span>
+         </label>
+         <label for="EmailInput" class="form-group">
+             <input type="text" name="email" class="form-control" id="EmailInput" required>
+             <span for=""> Email </span>
+             <span class="border"></span>
+         </label>
+         <label for="subject" class="form-group">
+            <input type="text" name="subject" class="form-control" id="subject" required>
+            <span for=""> Subject </span>
+            <span class="border"></span>
+        </label>
+         <label for="textInput" class="form-group" >
+             <textarea name="message" id="textInput" class="form-control" required></textarea>
+             <span for=""> Message </span>
+             <span class="border"></span> 
+            </label>
+           
+            
+            <button type="submit">Send</button>
+
+     </form>
+
+
+        <button style="text-align: center">
+            <a href="/" style="color: white">back to Home
+            </a>
+            <i > </i>
+        </button>
+    
+    </div>
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>

@@ -1,0 +1,129 @@
+/* .admin-wrapper {
+    display: flex;
+    height: calc(100% - 66px);
+}
+.admin-wrapper .left-sidebar {
+    flex: 2;
+    height: 100%;
+    border: 1px solid red;
+}
+.admin-wrapper .admin-content {
+    flex: 8;
+    height: 100%;
+    border: 1px solid gray;
+}
+
+body {
+    background-color: #775899;
+} */
+body{
+    height: 100%;
+}
+.main{
+    min-height: 75vh;
+}
+.margin-top{
+    margin-top: 25px;
+}
+.padding{
+    padding: 1%;
+}
+
+.title input{
+    width: 100%;
+}
+
+.body textarea{
+    width: 100%;
+}
+
+.post-btn{
+    padding: 7px 30px;
+}
+
+.frh2{
+    text-align: center;
+}
+
+
+footer{
+    margin-top: 50px;
+    background-color: #57b6fa;
+    color: #ffffff;
+    padding: 40px;
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1.1rem;
+}
+th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid black;
+}
+
+.btnForms{
+    display: inline;
+}
+
+.pair-btn{
+    text-decoration: none;
+    color: #ffffff;
+    background-color: black;
+    padding: 1%;
+    border-radius: 10px;
+}
+
+.center{
+    text-align: center;
+}
+
+.admin-input{
+    text-align: right !important;
+}
+
+.admin-input ::placeholder{
+ text-align: right !important;
+}
+
+.login{
+    width: 50%;
+    margin: auto;
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: border-box;
+}
+
+.toolbar {}
+.tool-list {
+	display: flex;
+	flex-flow: row nowrap;
+	list-style: none;
+	padding: 0;
+	margin: 1rem;
+	overflow: hidden;
+	border-raduis: 10px;
+}
+.tool {}
+.tool--btn {
+	display: block;
+	border: none;
+	padding: .5rem;
+	font-size: 20px;
+}
+
+
+
+#output {
+    height: 400px;
+    width: 100%; 
+	box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+	margin: 1rem;
+	padding: 1rem;
+}

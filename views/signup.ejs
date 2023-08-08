@@ -1,0 +1,37 @@
+<%- include('partials/admin-header.ejs')  %>
+
+<form action="/admin/signup" method="POST" class="center">
+    <div class="container">
+        <div class="login padding">
+            <label for="exampleFormControlInput1" class="col-form-label" >Full Name</label><br>
+            <input type="text" name="userName" class="form-control" id="exampleFormControlInput1">
+        </div>
+
+        <div class="login padding">
+            <label for="exampleFormControlInput1" class="col-form-label" >Email Address</label><br>
+            <input type="email" name="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+        </div>
+
+        <div class="login padding">
+            <label for="inputPassword" class="col-form-label" >Password</label><br>
+            <input type="password" name="password" class="form-control" id="inputPassword">
+        </div>
+
+        <div class="login padding">
+            <label class="col-form-label">Role</label><br>
+            <input type="radio" class="btn-check" name="role" id="dark-outlined-admin" value="admin">
+            <label class="btn btn-outline-dark" for="dark-outlined-admin">Admin</label>
+            <input type="radio" class="btn-check" name="role" id="dark-outlined-author" value="author">
+            <label class="btn btn-outline-dark" for="dark-outlined-author">Author</label>
+        </div>
+
+        <div class="padding center">
+            <button type="submit" class="btn btn-outline-info post-btn">Signup</button>
+        </div>
+
+    </div>
+</form>
+
+
+
+<%- include('partials/admin-footer.ejs')  %>

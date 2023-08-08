@@ -1,0 +1,68 @@
+<%- include('./partials/header.ejs')  %>
+
+
+
+    <section class="container">
+        <div class="row">
+
+            <div class="container">
+                <div class="col-lg-10 col-md-12 main-post">
+
+                    <div class="post-header">
+
+                        <div class="main-post-title">
+                            <p><%= post.title %> </p>
+
+                            <div class="main-post-img"><img class="img-fluid" src="/<%= post.image %>">
+                            </div>
+                        </div>
+
+
+                        <div class="main-post-info">
+                            <p class="date"><%= post.createdAt %></p>
+                        </div>
+                    </div>
+                    <div class="post-body">
+                        <p>
+                            <%- post.body %> 
+                        </p>
+                    </div>
+                    <div class="post-footer"></div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+<hr style="font-weight: 200; margin: 50px;">
+<%  if(relatedPosts.length == 4){ %>
+    <div class="container realted-post">
+    
+        <div class="row">
+            <% for(let i = relatedPosts.length-1; i > relatedPosts.length-3 ; i--){ %>
+                    <div class="col-lg-6 col-md-12 rel-post">
+                        <div class="rel-post-title">
+                            <div class="rel-post-img"><img src="/<%= relatedPosts[i].image %>" alt="Rlated Post">
+                        </div>
+                        <p style="width: 80%;"><a href=""><%= relatedPosts[i].title %> </a></p>
+                    </div>
+                    </div>
+            <% } %> 
+        </div>
+    
+        <div class="row">
+            <% for(let i = relatedPosts.length-3; i > relatedPosts.length-5 ; i--){ %>
+                    <div class="col-lg-6 col-md-12 rel-post">
+                        <div class="rel-post-title">
+                            <div class="rel-post-img"><img src="/<%= relatedPosts[i].image %>" alt="Rlated Post">
+                        </div>
+                        <p style="width: 80%;"><a href=""><%= relatedPosts[i].title %> </a></p>
+                    </div>
+                    </div>
+            <% } %> 
+        </div>
+    </div>
+<% } %>
+
+
+<%- include('partials/footer.ejs')  %>

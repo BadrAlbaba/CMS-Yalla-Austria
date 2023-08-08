@@ -1,0 +1,31 @@
+<%- include('partials/admin-header.ejs')  %>
+<form action="/admin/login" method="post" class="center">
+    <section class="main">
+        <div class="container">
+
+            <div class="login padding">
+                <label for="exampleFormControlInput1" class="col-form-label">Email Address</label><br>
+                <input type="email" class="form-control" id="exampleFormControlInput1" name="email" placeholder="name@example.com" required>
+            </div>
+
+            <div class="login padding">
+                <label for="inputPassword" class="col-form-label">Password</label><br>
+                <input type="password" class="form-control" name="password" id="inputPassword" required>
+            </div>
+
+            
+            <div class="padding center">
+                <a href="/admin/reset">Forget Password</a>
+            </div>
+
+            <div class="padding center">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                <button type="submit" class="btn btn-outline-info post-btn">Login</button>
+            </div>
+
+        </div>
+    </section>
+</form>
+
+
+<%- include('partials/admin-footer.ejs')  %>

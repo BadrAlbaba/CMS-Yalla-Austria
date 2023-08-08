@@ -1,0 +1,224 @@
+<%- include('partials/admin-header.ejs')  %>
+
+<section class="main">
+    <div class="container">
+    
+      <div class="margin-top padding">
+        <a href="/admin/add-<%=page%>" class="btn btn-dark">Add <%= button %></a>
+        <a href="/admin/manage-<%=page%>" class="btn btn-dark">Manage <%= button %></a>
+      </div>
+      <h2 class="padding frh2">
+        <%= header %> 
+      </h2>
+
+      <div class="padding">
+        <table>
+            <thead>
+            <th>ID</th>
+            <th><%= firstTh %> </th>
+            <th><%= secoundTh %> </th>
+            <% if(page === "post" || page === "first-topic" || page === "secound-topic" || page === "third-topic") { %>
+                <th >Date</th>
+            <% } %> 
+            <th colspan="3">Action </th>
+            </thead>
+            <tbody>
+
+
+            <!-- If the page is post -->
+
+            <% if(page === "post") { %> 
+                <%posts.forEach(post => { %> 
+                    <tr>
+                        <td><%= id++ %> </td>
+                        <td><%= post.title %> </td>
+                        <td><%= post.author %> /<%=post.updatedBy %></td>
+                        <td><%= post.createdAt %> ; <%= post.updatedAt %> </td>
+                        <td><a href="/admin/edit-post/<%=post._id%>" class="btn btn-warning">Edit</a></td>
+                        <td><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal<%=post._id%>">Delete</button></td>
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal<%=post._id%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Deleting post</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                    Are you sure, you want to delete this post: <%= post.title %> !
+                                    </div>
+                                    <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <form action="/admin/manage-post" method="post">
+                                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                    <button type="submit" name="postTitleButton" value="<%=post._id%>" class="btn btn-danger">Delete</button>
+                                    </form>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            <!--End Modal -->  
+                    </tr>
+                <%}); %>
+            <% } %>
+
+
+            <!-- If the page is first-topic -->
+
+            <% if(page === "first-topic") { %> 
+                <%topics.forEach(topic => { %> 
+                    <tr>
+                        <td><%= id++ %> </td>
+                        <td><%= topic.name %> </td>
+                        <td><%= topic.author %> /<%=topic.updatedBy %> </td>
+                        <td><%= topic.createdAt %> ; <%= topic.updatedAt %>  </td>
+                        <td><a href="/admin/edit-first-topic/<%=topic._id%>" class="btn btn-warning">Edit</a></td>
+                        <td><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal<%=topic._id%>">Delete</button></td>
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal<%=topic._id%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Deleting topic</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                    Are you sure, you want to delete this topic: <%= topic.name %> !
+                                    </div>
+                                    <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <form action="/admin/manage-first-topic" method="post">
+                                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                        <button type="submit" name="topicNameButton" value="<%=topic._id%>"  class="btn btn-danger">Delete</button>
+                                    </form>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            <!--End Modal -->  
+                    </tr>
+                <% }); %>
+            <% } %>
+
+            
+            <!-- If the page is secound-topic -->
+
+            <% if(page === "secound-topic") { %> 
+                <%topics.forEach(topic => { %> 
+                    <tr>
+                        <td><%= id++ %> </td>
+                        <td><%= topic.name %> </td>
+                        <td><%= topic.author %> /<%=topic.updatedBy %> </td>
+                        <td><%= topic.createdAt %> ; <%= topic.updatedAt %> </td>
+                        <td><a href="/admin/edit-secound-topic/<%=topic._id%>" class="btn btn-warning">Edit</a></td>
+                        <td><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal<%=topic._id%>">Delete</button></td>
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal<%=topic._id%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Deleting topic</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                    Are you sure, you want to delete this topic: <%= topic.name %> !
+                                    </div>
+                                    <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <form action="/admin/manage-secound-topic" method="post">
+                                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                        <button type="submit" name="topicNameButton" value="<%=topic._id%>"  class="btn btn-danger">Delete</button>
+                                    </form>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            <!--End Modal -->  
+                    </tr>
+                <% }); %>
+            <% } %>
+
+
+            <!-- If the page is third-topic -->
+
+            <% if(page === "third-topic") { %> 
+                <%topics.forEach(topic => { %> 
+                    <tr>
+                        <td><%= id++ %> </td>
+                        <td><%= topic.name %> </td>
+                        <td><%= topic.author %> /<%=topic.updatedBy %> </td>
+                        <td><%= topic.createdAt %> ; <%= topic.updatedAt %> </td>
+                        <td><a href="/admin/edit-third-topic/<%=topic._id%>" class="btn btn-warning">Edit</a></td>
+                        <td><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal<%=topic._id%>">Delete</button></td>
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal<%=topic._id%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Deleting topic</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                    Are you sure, you want to delete this topic: <%= topic.name %> !
+                                    </div>
+                                    <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <form action="/admin/manage-third-topic" method="post">
+                                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                        <button type="submit" name="topicNameButton" value="<%=topic._id%>"  class="btn btn-danger">Delete</button>
+                                    </form>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            <!--End Modal -->  
+                    </tr>
+                <% }); %>
+            <% } %>
+
+
+            <!-- If the page is user -->
+
+            <% if(page === "user") { %> 
+                <%users.forEach(user => { %> 
+                    <tr>
+                        <td><%= id %> </td>
+                        <td><%= user.userName %> </td>
+                        <td><%= user.role %> </td>
+                        <td><a href="/admin/edit-user/<%=user._id%>" class="btn btn-warning">Edit</a></td>
+                        <td><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal<%=user._id%>">Delete</button></td>
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal<%=user._id%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Deleting user</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                    Are you sure, you want to delete this user : <%= user.userName %> !
+                                    </div>
+                                    <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <form action="/admin/manage-user" method="post">
+                                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                        <button type="submit" name="userId" value="<%=user._id%>"  class="btn btn-danger">Delete</button>
+                                    </form>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            <!--End Modal -->  
+                    </tr>
+                <% }); %>
+            <% } %>
+            
+            </tbody>
+        </table>
+      </div>
+  
+    </div>  
+</section>    
+  
+
+<%- include('partials/admin-footer.ejs')  %>

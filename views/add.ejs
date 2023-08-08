@@ -1,0 +1,117 @@
+<%- include('partials/admin-header.ejs')  %>
+
+
+<form action="/admin/add-<%=page%>" method="POST" enctype="multipart/form-data">
+
+
+<section class="main">
+<div class="container">
+
+  <div class="margin-top padding">
+    <a href="/admin/add-<%=page%>" class="btn btn-dark">Add <%= button %></a>
+    <a href="/admin/manage-<%=page%>" class="btn btn-dark">Manage <%= button %></a>
+  </div>
+  <h2 class="padding frh2">
+    <%= header %> 
+  </h2>
+
+  <!-- if the page is /admin-add-post | admin-add-topic: it will appaear "title" -->
+  <div class="padding title">
+    <label for=""><%= firstInput %> </label><br>
+    <div class="input-group input-group-sm mb-3">
+      <input type="text" name=<%= firstinputName %> class="form-control admin-input" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+    </div>
+  </div>
+
+  
+  <% if(page === "post" || page === "first-topic" || page === "secound-topic" || page === "third-topic"){ %>
+    <div class="padding body">
+      <textarea id="editore" rows="10" cols="80" name=<%=secoundInputName%> required></textarea>
+    </div>
+  <% } %>
+
+
+  <!-- if the page is /admin-add-post : it will appear an upload image input -->
+  <% if( page  === "post" ){ %>
+    <div class="margin-top padding image">
+      <div class="input-group mb-3">
+        <input type="file" name="image" class="form-control" id="inputGroupFile02" required>
+      </div>        
+    </div>
+  
+  <!-- if the page is /admin-add-post : it will appear a selecting menu to  which topic the post is about -->
+    
+    <div class="padding">
+      <%topics.forEach(topic => { %>
+      <input type="radio" class="btn-check" name="postTopic" id="success-outlined-<%= topic.name %>" value="<%= topic._id %>">
+      <label class="btn btn-outline-success" for="success-outlined-<%= topic.name %>"><%= topic.name %></label>
+      <% });%>
+    </div>
+    
+  <% } %>
+
+  <% if( page  === "secound-topic" ){ %>
+    
+    <div class="padding">
+      <%mainTopics.forEach(topic => { %>
+      <input type="radio" class="btn-check" name="mainTopic" id="success-outlined-<%= topic.name %>" value="<%= topic._id %>">
+      <label class="btn btn-outline-success" for="success-outlined-<%= topic.name %>"><%= topic.name %></label>
+      <% });%>
+    </div>
+    
+  <% } %>
+
+  <% if( page  === "third-topic" ){ %>
+    
+    <div class="padding">
+      <%mainTopics.forEach(topic => { %>
+      <input type="radio" class="btn-check" name="mainTopic" id="success-outlined-<%= topic.name %>" value="<%= topic._id %>">
+      <label class="btn btn-outline-success" for="success-outlined-<%= topic.name %>"><%= topic.name %></label>
+      <% });%>
+    </div>
+  
+  <% } %>
+
+
+
+  
+
+
+  <!-- if the page is /admin-add-user : it will appear email, passwor, and password confirmation -->
+  <% if( page  === "user" ){ %>
+    <div class="padding">
+      <label >Email</label><br>
+      <div class="input-group mb-3">
+        <input type="email" name="email" class="form-control" placeholder="Enter Email" aria-label="Email" aria-describedby="basic-addon1" required>
+      </div>
+    </div>
+    <div class="padding">
+      <label >Password</label><br>
+      <div class="input-group mb-3">
+        <input type="password" name="password" class="form-control" placeholder="Enter Password" aria-label="Password" aria-describedby="basic-addon1" required>
+      </div>
+    </div>
+    <div class="padding">
+      <label class="col-form-label">Role</label><br>
+      <input type="radio" class="btn-check" name="role" id="dark-outlined-admin" value="admin">
+      <label class="btn btn-outline-dark" for="dark-outlined-admin">Admin</label>
+      <input type="radio" class="btn-check" name="role" id="dark-outlined-author" value="author">
+      <label class="btn btn-outline-dark" for="dark-outlined-author">Author</label>
+    </div>
+  <% } %>
+
+
+  <!-- button to submit all the page inputs -->
+  <div class="padding">
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+    <button type="submit" class="btn btn-outline-info post-btn">Add</button>
+  </div>
+
+
+  
+</div>  
+</section>  
+</form>  
+
+  
+<%- include('partials/admin-footer.ejs')  %>

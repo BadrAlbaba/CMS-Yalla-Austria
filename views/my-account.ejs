@@ -1,0 +1,22 @@
+<%- include('partials/admin-header.ejs')  %>
+
+<form action="/admin/my-account" method="post">
+    <section class="main">
+        <div class="container">
+            <div class="padding">
+                <label >Name:</label><br>
+                <p><%= name %> </p>
+              </div>
+    
+            <div class="padding">
+                <label >Email:</label><br>
+                <p><%= email %> </p>
+            </div>
+    
+        </div>
+    </section>
+    
+</form>
+
+
+<%- include('partials/admin-footer.ejs')  %>

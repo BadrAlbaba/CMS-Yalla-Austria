@@ -1,0 +1,147 @@
+<%- include('partials/admin-header.ejs')  %>
+
+<form action="/admin/edit-<%= page %>/<%=inputsValue.id%>" method="POST" enctype="multipart/form-data">
+
+
+
+<section class="main">
+<div class="container">
+    
+    <div class="margin-top padding">
+        <a href="/admin/add-<%=page%>" class="btn btn-dark">Add <%= button %></a>
+        <a href="/admin/manage-<%=page%>" class="btn btn-dark">Manage <%= button %></a>
+    </div>   
+          
+    <h2 class="padding frh2">
+        <%= header %> 
+    </h2>
+
+    <div class="padding title">
+        <label for=""><%= firstInput %> </label><br>
+        <div class="input-group input-group-sm mb-3">
+          <input type="text" name=<%= firstinputName %> value="<%= frInputValue %>" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+        </div>  
+    </div>
+
+    <!-- if page is post or topic or main-topic -->
+
+    <%if(page === "post" || page === "first-topic" || page === "secound-topic" || page === "third-topic"){%>
+        <div class="padding body">
+            <textarea id="editore" rows="10" cols="80" name=<%=secoundInputName%> required><%- scInputValue %></textarea>
+        </div>
+    <%}%>
+
+    <!-- if page is topic -->
+
+    <% if( page  === "secound-topic" ){ %>
+
+        <%mainTopics.forEach(topic => {%>
+            <% if(topic._id.toString() == inputsValue.fsTopic.toString()){ %> 
+                <div class="padding">
+                    <label >Topic:</label>
+                    <span><%= topic.name %> </span>
+                </div>
+            <% } %> 
+        <% });%>
+
+        <div class="padding">
+            <%mainTopics.forEach(topic => {%>
+            
+            <input type="radio" class="btn-check" name="mainTopic" id="success-outlined-<%= topic.name %>" value="<%= topic._id %>" >
+            <label class="btn btn-outline-success" for="success-outlined-<%= topic.name %>"><%= topic.name %></label>
+
+            <% });%>
+        </div>
+    <% } %>
+
+    <% if( page  === "third-topic" ){ %>
+
+        <%mainTopics.forEach(topic => {%>
+            <% if(topic._id.toString() == inputsValue.scTopic.toString()){ %> 
+                <div class="padding">
+                    <label >Topic:</label>
+                    <span><%= topic.name %> </span>
+                </div>
+            <% } %> 
+        <% });%>
+
+        <div class="padding">
+            <%mainTopics.forEach(topic => {%>
+            
+            <input type="radio" class="btn-check" name="mainTopic" id="success-outlined-<%= topic.name %>" value="<%= topic._id %>" >
+            <label class="btn btn-outline-success" for="success-outlined-<%= topic.name %>"><%= topic.name %></label>
+
+            <% });%>
+        </div>
+    <% } %>
+
+    <!-- if page is post -->
+    
+    <% if( page  === "post" ){ %>
+        <div class="margin-top padding image">
+            <div class="input-group mb-3">
+            <input type="file" name="image" class="form-control" id="inputGroupFile02">
+            </div>        
+        </div>
+
+        <%topics.forEach(topic => {%>
+            <% if(topic._id.toString() == inputsValue.postTopic.toString()){ %> 
+                <div class="padding">
+                    <label >Topic:</label>
+                    <span><%= topic.name %> </span>
+                </div>
+            <% } %> 
+        <% });%>
+
+        <div class="padding">
+            <%topics.forEach(topic => {%>
+            
+            <input type="radio" class="btn-check" name="postTopic" id="success-outlined-<%= topic.name %>" value="<%= topic._id %>" >
+            <label class="btn btn-outline-success" for="success-outlined-<%= topic.name %>"><%= topic.name %></label>
+
+            <% });%>
+        </div>
+    <% } %>
+
+    <!-- if page is user -->
+
+    <% if( page  === "user" ){ %>
+        <div class="padding">
+          <label >Email</label><br>
+          <div class="input-group mb-3">
+            <input type="email" name="email" value="<%= inputsValue.email %>" class="form-control" aria-label="Email" aria-describedby="basic-addon1">
+          </div>
+        </div>
+        <div class="padding">
+            <%if(inputsValue.role === "admin"){%>
+                <label class="col-form-label">Role</label><br>
+                <input type="radio" class="btn-check" name="role" id="dark-outlined-admin" value="admin" checked>
+                <label class="btn btn-outline-dark" for="dark-outlined-admin">Admin</label>
+                <input type="radio" class="btn-check" name="role" id="dark-outlined-author" value="author">
+                <label class="btn btn-outline-dark" for="dark-outlined-author">Author</label>
+            <%}%>
+            <%if(inputsValue.role === "author"){%>
+                <label class="col-form-label">Role</label><br>
+                <input type="radio" class="btn-check" name="role" id="dark-outlined-admin" value="admin" >
+                <label class="btn btn-outline-dark" for="dark-outlined-admin">Admin</label>
+                <input type="radio" class="btn-check" name="role" id="dark-outlined-author" value="author" checked>
+                <label class="btn btn-outline-dark" for="dark-outlined-author">Author</label>
+            <%}%>
+            
+        </div>
+      <% } %>
+
+    <div class="padding">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+        <button type="submit" class="btn btn-outline-info post-btn">Edit</button>
+    </div>
+    
+</div>
+</section>
+</form>
+
+
+
+
+
+<%- include('partials/admin-footer.ejs')  %>

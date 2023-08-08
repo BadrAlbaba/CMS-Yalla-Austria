@@ -1,0 +1,45 @@
+<%- include('partials/admin-header.ejs')  %>
+<% if(page === "reset"){ %>
+    <form action="/admin/reset" method="POST">
+        <section class="main">
+            <div class="container">
+                <div class="login padding">
+                    <label for="exampleFormControlInput1" class="col-form-label">Email Address</label><br>
+                    <input type="email" class="form-control" id="exampleFormControlInput1" name="email" placeholder="name@example.com">
+                </div>
+                <div class="padding center">
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                    <button type="submit" class="btn btn-outline-info post-btn">Reset Password</button>
+                </div>
+            </div>
+        </section>
+    </form>
+<% } %>
+<% if(page === "new-password"){ %>
+    <form action="/admin/new-password" method="POST">
+        <section class="main">
+            <div class="container">
+                <div class="login padding">
+                    <label for="exampleFormControlInput1" class="col-form-label">New Password</label><br>
+                    <input type="password" class="form-control" id="exampleFormControlInput1" name="password" required>
+                </div>
+                <div class="padding login" >
+                    <label for="exampleFormControlInput1" class="col-form-label">Confirm Password</label><br>
+                    <input type="password" class="form-control" id="exampleFormControlInput1" name="passwordConfirmation" required>
+                </div>
+                <div class="padding center">
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                    <input type="hidden" name="passwordToken" value="<%= passwordToken %>">
+                    <input type="hidden" name="userId" value="<%= userId %>">
+                    <button type="submit" class="btn btn-outline-info post-btn">Reset Password</button>
+                </div>
+            </div>
+        </section>
+    </form>
+   
+<% } %>
+
+
+
+
+<%- include('partials/admin-footer.ejs')  %>

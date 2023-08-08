@@ -1,0 +1,101 @@
+<%- include('./partials/header.ejs')  %>
+
+<% if(page === "home"){ %> 
+
+
+  <!-- Posts section -->
+    <!--todo-->
+    <section class="top-posts">
+      <div class="container">
+  
+        <div class="row">
+          <div class="col-md-3">
+            <div class="row">  
+              <img class="img4 newPost" src="/<%=posts[posts.length-1].image%>" alt="">
+              <a href="/posts/<%= posts[posts.length-1].title %>"> <%= posts[posts.length-1].title %>  </a>
+              <p class="main-style"><%- posts[posts.length-1].body.substring(0, 200) + " ..." %> </p> 
+            </div>
+
+            <div class="row">
+              <img class="img3 newPost" src="/<%=posts[posts.length-2].image%>" alt="">
+              <a href="/posts/<%= posts[posts.length-2].title %>"> <%= posts[posts.length-2].title %></a>
+              <p class="main-style"><%- posts[posts.length-2].body.substring(0, 200) + " ..." %></p>
+            </div>
+          </div>
+  
+          <div class="col-md-3">
+            <img class="img2 newPost" src="/<%= posts[posts.length-3].image %>" alt="">
+            <a href="/posts/<%= posts[posts.length-3].title %>"> <%= posts[posts.length-3].title %></a>
+            <p class="main-style"><%- posts[posts.length-3].body.substring(0, 200) + " ..." %> </p> 
+          </div>
+  
+          <div class="col-md-6">
+            <img class="img1 newPost" src="/<%= posts[posts.length-4].image %>" alt="">
+            <a href="/posts/<%= posts[posts.length-4].title %>"> <%= posts[posts.length-4].title %></a>
+            <p class="main-style"><%- posts[posts.length-4].body.substring(0, 200) + " ..." %> </p>
+          </div>
+  
+        </div> 
+  
+      </div>
+  
+    </section>
+
+  <hr style="font-size: large; margin:50px">
+
+
+
+<section id="bottom-posts">
+
+    <div class="container">
+      <% for(let i = posts.length-5; i>0 ; i--){ %>  
+        <div class="row">
+          <div class="col-lg-12 col-md-12 single-post">
+            <div class="single-img"><img src="<%= posts[i].image %>" alt="picutre of the post" ></div>
+            <div class="single-body">
+              <a class="single-title main-style" href="/posts/<%= posts[i].title %>"> <%= posts[i].title %></a>
+              <p class="single-text"><%- posts[i].body.substring(0, 200) + " ..."  %></p>
+            </div>
+          </div>
+        </div>
+      <% } %>  
+    </div>
+
+ 
+
+
+</section>
+<% } %> 
+
+<% if(page === "categories"){  %> 
+  
+<section class="categories-posts" id="bottom-posts">
+
+  <div class="container">
+    <% posts.forEach(post => {%>
+      <div class="row">
+        <div class="col-lg-12 col-md-12 single-post">
+          <div class="single-img"><img src="/<%= post.image %>" alt="picutre of the post" ></div>
+          <div class="single-body">
+            <a class="single-title" href="/posts/<%= post.title %>"> <%= post.title %></a>
+            <p class="single-text main-style"><%- post.body.substring(0, 200) + " ..."  %></p>
+          </div>
+        </div>
+      </div>
+    <% }); %>  
+  </div>
+
+
+</section>
+
+<% } %> 
+
+
+
+<!-- <div class="next-site" ><a href="#"><i class='fas fa-angle-left' style='font-size:24px; color: rgba(30, 144, 255, 0.8);'></i></a> &nbsp;
+  1 &nbsp; <a href="#"><i class='fas fa-angle-right' style='font-size:24px; color: rgba(30, 144, 255, 0.8);'></i></a></div> -->
+
+
+
+
+<%- include('partials/footer.ejs')  %> 
